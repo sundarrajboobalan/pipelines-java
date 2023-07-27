@@ -25,9 +25,13 @@ steps:
     buildType: 'current'
     downloadType: 'specific'
     downloadPath: '$(System.ArtifactsDirectory)'
-- task: SonarQubeAnalyze@5
+- task: Docker@2
   inputs:
-    jdkversion: 'JAVA_HOME_11_X64'
+    containerRegistry: 'dockerhub'
+    repository: 'azuredevops'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
     
 
 
